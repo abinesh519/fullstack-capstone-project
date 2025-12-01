@@ -10,11 +10,13 @@ router.get('/', async (req, res) => {
         // const gifts = {{insert code here}}
         const gifts = await collection.find({}).toArray();
         // Task 4: return the gifts using the res.json method
-        return res.json(gifts);
+         res.json(gifts);
         // res.json(/* {{insert code here}} */);
     } catch (e) {
-        console.error('Error fetching gifts:', e);
-        res.status(500).send('Error fetching gifts');
+        // console.error('Error fetching gifts:', e);
+        // res.status(500).send('Error fetching gifts');
+        logger.console.error('oops something went wrong', e)
+        next(e);
     }
 });
 
